@@ -1,0 +1,6 @@
+#A décommenter au fur et à mesure de l'avancement des composants
+
+resources: []
+#  - certificates.cert-manager.yaml
+#  - gatewayclass.yaml
+#  - gateway.yaml

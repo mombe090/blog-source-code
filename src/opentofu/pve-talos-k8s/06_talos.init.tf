@@ -21,6 +21,25 @@ resource "talos_machine_configuration_apply" "controlplane" {
   client_configuration        = talos_machine_secrets.this.client_configuration
   machine_configuration_input = data.talos_machine_configuration.controlplane.machine_configuration
   node                        = var.control_plane_ip
+  config_patches = [
+    yamlencode({
+      machine = {
+        registries = {
+          mirrors = {
+            "docker.io" = {
+              endpoints = ["https://mirror.gcr.io"]
+            }
+          }
+        }
+      }
+      cluster = {
+        proxy = {
+          image = "registry.k8s.io/kube-proxy:v1.32.0"
+          extraArgs = { nodeport-addresses = "0.0.0.0/0" }
+        }
+      }
+    })
+  ]
 }
 
 resource "talos_machine_bootstrap" "this" {
@@ -44,10 +63,11 @@ data "talos_cluster_health" "this" {
   depends_on = [
     talos_machine_configuration_apply.controlplane,
     talos_machine_configuration_apply.worker,
+    talos_machine_configuration_apply.worker_02,
   ]
   client_configuration = data.talos_client_configuration.this.client_configuration
   control_plane_nodes  = [var.control_plane_ip]
-  worker_nodes         = [var.worker_01_ip]
+  worker_nodes         = [var.worker_01_ip, var.worker_02_ip]
   endpoints            = data.talos_client_configuration.this.endpoints
   timeouts = {
     read = "8m"

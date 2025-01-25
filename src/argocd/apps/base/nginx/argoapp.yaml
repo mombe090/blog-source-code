@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx
+  namespace: argo-cd
+  labels:
+    use-case: buisness-app
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/mombe090/blog-source-code.git
+    targetRevision: argo-pihole-extd-certmanager
+    path: src/kubernetes/plain-yaml/nginx
+
+  destination:
+    namespace: nginx
+    server: https://kubernetes.default.svc
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
+      - CreateNamespace=true

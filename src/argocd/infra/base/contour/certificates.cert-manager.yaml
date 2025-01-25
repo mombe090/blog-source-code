@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: blog-tutoriel-mombesoft
+  namespace: contour-system
+spec:
+  secretName: blog-tutoriels-tls
+  issuerRef:
+    name: cloudflare-acme-issuer
+    kind: ClusterIssuer
+  commonName: "*.tuto.mombesoft.com"
+  dnsNames:
+    - "tuto.mombesoft.com"
+    - "*.tuto.mombesoft.com"

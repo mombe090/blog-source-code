@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-index-page
+  namespace: nginx
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Congratulation</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f0f0f0;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                flex-direction: column;
+            }
+            img {
+                max-width: 100%;
+                width: 1200px;
+                height: 630px;
+            }
+            h1 {
+                color: #333;
+            }
+            p {
+                color: #666;
+                max-width: 800px; 
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Bravo, ce fut une belle Aventure !</h1>
+        <img src="https://images.unsplash.com/photo-1517976547714-720226b864c1?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Centered Image">
+        <p>Vous avez réussi à déployer une application sur un cluster Kubernetes
+    </body>
+    </html>

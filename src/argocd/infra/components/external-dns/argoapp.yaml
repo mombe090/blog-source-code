@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: external-dns
+  namespace: argo-cd
+spec:
+  destination:
+    namespace: external-dns
+    server: https://kubernetes.default.svc
+
+  project: default
+
+  source:
+    chart: external-dns
+    path: external-dns
+    repoURL: registry-1.docker.io/bitnamicharts
+    targetRevision:  8.7.3
+    helm:
+      valuesObject:
+        fullnameOverride: external-dns
+        logLevel: debug
+        provider: pihole
+        pihole:
+          server: http://pi-hole-pihole-web.pihole-system.svc.cluster.local
+          secretName: pihole-admin-password-secret
+        registry: noop
+        policy: upsert-only
+        extraArgs:
+          source:
+            - gateway-httproute
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
+      - CreateNamespace=true

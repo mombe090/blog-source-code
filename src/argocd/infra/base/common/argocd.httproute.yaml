@@ -1,0 +1,18 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: argo-ui
+  namespace: argo-cd
+spec:
+  parentRefs:
+    - name: contour-gateway-api
+      namespace: contour-system
+  hostnames: ["argocd.tuto.mombesoft.com"]
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: argo-server
+          port: 443
