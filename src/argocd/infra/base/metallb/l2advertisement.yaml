@@ -1,0 +1,8 @@
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: blog-avertisement-l2
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+    - blog-pool1

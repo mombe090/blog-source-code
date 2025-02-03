@@ -1,0 +1,23 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: contour-gateway-api
+  namespace: contour-system
+spec:
+  gatewayClassName: contour
+  listeners:
+    - name: http
+      hostname: "*.tuto.mombesoft.com"
+      protocol: HTTP
+      port: 80
+    - name: https
+      hostname: "*.tuto.mombesoft.com"
+      port: 443
+      protocol: HTTPS
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: blog-tutoriels-tls
+      allowedRoutes:
+        namespaces:
+          from: All

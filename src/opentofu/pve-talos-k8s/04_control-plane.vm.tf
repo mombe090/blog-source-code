@@ -1,4 +1,5 @@
 resource "proxmox_virtual_environment_vm" "control-plane" {
+  vm_id = 10000
   name      = "control-plane"
   node_name = "pve" # Remplacez "pve" par le nom de votre serveur Proxmox
 
@@ -14,12 +15,12 @@ resource "proxmox_virtual_environment_vm" "control-plane" {
   stop_on_destroy = true
 
   cpu {
-    cores = 2 #Talos recommande 4 coeurs pour des workloads de production, 2 étant le minimum pour le control plane mais ajuster à vos bésoins.
+    cores = 4 #Talos recommande 4 coeurs pour des workloads de production, 2 étant le minimum pour le control plane mais ajuster à vos bésoins.
     type  = "x86-64-v2-AES" # type de cpu moderne supporter par la plupart des serveurs et services.
   }
 
   memory {
-    dedicated = 2048 # Talos recommande 4 Go pour des workloads de production, 2 étant le minimum pour le control plane mais ajuster à vos bésoins.
+    dedicated = 4096 # Talos recommande 4 Go pour des workloads de production, 2 étant le minimum pour le control plane mais ajuster à vos bésoins.
   }
 
   disk {
@@ -27,7 +28,7 @@ resource "proxmox_virtual_environment_vm" "control-plane" {
     file_id      = "local:iso/${var.talos_img_name}.${var.talos_version}.img"
     interface    = "virtio0"
     file_format  = "raw"
-    size         = 10 # 10 Go
+    size         = 25 # 10 Go
   }
 
   initialization {

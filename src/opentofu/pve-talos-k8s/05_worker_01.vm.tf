@@ -1,4 +1,5 @@
 resource "proxmox_virtual_environment_vm" "worker-1" {
+  vm_id = 10001
   name      = "worker-1"
   node_name = "pve" # Remplacez "pve" par le nom de votre serveur Proxmox
 
@@ -15,12 +16,12 @@ resource "proxmox_virtual_environment_vm" "worker-1" {
   stop_on_destroy = true
 
   cpu {
-    cores = 1 #Talos recommande 2 coeurs pour des workloads de production, 1 étant le minimum pour le worker mais ajuster à vos bésoins.
+    cores = 4 #Talos recommande 2 coeurs pour des workloads de production, 1 étant le minimum pour le worker mais ajuster à vos bésoins.
     type  = "x86-64-v2-AES" # type de cpu moderne supporter par la plupart des serveurs et services.
   }
 
   memory {
-    dedicated = 1024 # Talos recommande 2 Go pour des workloads de production, 1Go étant le minimum pour le worker mais ajuster à vos bésoins.
+    dedicated = 4096 # Talos recommande 2 Go pour des workloads de production, 1Go étant le minimum pour le worker mais ajuster à vos bésoins.
   }
 
   disk {

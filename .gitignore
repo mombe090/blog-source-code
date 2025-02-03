@@ -42,3 +42,6 @@ terraform.rc
 
 k8s_config
 .idea/
+
+*.envrc
+**/.envrc

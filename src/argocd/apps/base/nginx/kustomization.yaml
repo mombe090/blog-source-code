@@ -1,0 +1,3 @@
+resources:
+  - argoapp.yaml
+  - httproute.yaml

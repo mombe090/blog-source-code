@@ -1,0 +1,14 @@
+#A décommenter au fur et à mesure de l'avancement des composants
+
+resources: []
+#  - ../../base/common
+#  - ../../base/metallb
+#  - ../../base/cert-manager
+#  - ../../base/contour
+
+components: []
+#  - ../../components/metallb
+#  - ../../components/cert-manager
+#  - ../../components/contour
+#  - ../../components/pi-hole
+#  - ../../components/external-dns

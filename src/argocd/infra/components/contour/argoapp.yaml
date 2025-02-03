@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: contour
+  namespace: argo-cd
+  labels:
+    use-case: ingress-controller
+spec:
+  project: default
+
+  sources:
+  - repoURL: registry-1.docker.io/bitnamicharts
+    chart: contour
+    targetRevision: 19.5.4
+    path: contour
+
+  - repoURL: https://github.com/mombe090/blog-source-code.git
+    targetRevision: argo-pihole-extd-certmanager
+    path: src/argocd/infra/components/contour/gateway-provider-crds
+
+  destination:
+    namespace: contour-system
+    server: https://kubernetes.default.svc
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
