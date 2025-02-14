@@ -1,0 +1,38 @@
+{
+  "name": "authorizer",
+  "version": "1.0.0",
+  "description": "Lambda charger de l'authorization",
+  "main": "src/app.js",
+  "repository": "https://github.com/mombe090/blog-source-code.git ",
+  "author": "Mamadou Yaya DAILLO @generated-with-sam-cli",
+  "license": "MIT",
+  "scripts": {
+    "build": "esbuild src/app.ts --sourcemap --bundle --platform=node --target=es2020 --minify --external:aws-sdk --outfile=dist/app.js ",
+    "unit": "jest",
+    "lint": "eslint 'src/**/*.ts' --quiet --fix",
+    "compile": "tsc",
+    "test": "npm run compile && npm run unit"
+  },
+  "dependencies": {
+    "@aws-lambda-powertools/logger": "^2.13.1",
+    "esbuild": "^0.14.14",
+    "jsonwebtoken": "^9.0.2",
+    "jwks-rsa": "^3.1.0"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.2.0",
+    "@types/aws-lambda": "^8.10.92",
+    "@types/jest": "^29.2.0",
+    "@types/node": "^20.5.7",
+    "@typescript-eslint/eslint-plugin": "^5.10.2",
+    "@typescript-eslint/parser": "^5.10.2",
+    "eslint": "^8.8.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^29.2.1",
+    "prettier": "^2.5.1",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  }
+}

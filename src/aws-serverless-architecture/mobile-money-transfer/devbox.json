@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.7/.schema/devbox.schema.json",
+  "packages": [
+    "cargo-lambda@latest",
+    "awscli@latest",
+    "aws-sam-cli@latest",
+    "nodejs_22@latest",
+    "git@latest",
+    "direnv@latest",
+    "devenv@1.4",
+    "terraform@1.10.5"
+  ],
+  "shell": {
+    "init_hook": [
+      "echo 'Welcome to devbox!' > /dev/null"
+    ],
+    "scripts": {
+      "test": [
+        "echo \"Error: no test specified\" && exit 1"
+      ]
+    }
+  }
+}
