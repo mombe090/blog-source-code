@@ -45,3 +45,5 @@ k8s_config
 
 *.envrc
 **/.envrc
+
+**/**/*.zip
