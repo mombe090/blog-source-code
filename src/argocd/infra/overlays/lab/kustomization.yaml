@@ -4,7 +4,7 @@ resources:
   - ../../base/metallb
 #  - ../../base/common
   - ../../base/cert-manager
-#  - ../../base/contour
+  - ../../base/contour
 
 components:
   - ../../components/metallb
