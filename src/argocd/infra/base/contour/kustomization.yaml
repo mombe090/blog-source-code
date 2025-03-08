@@ -2,5 +2,5 @@
 
 resources:
   - certificates.cert-manager.yaml
-#  - gatewayclass.yaml
-#  - gateway.yaml
+  - gatewayclass.yaml
+  - gateway.yaml

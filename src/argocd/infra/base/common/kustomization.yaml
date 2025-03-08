@@ -3,4 +3,4 @@
 resources:
   - docker-io-helm-oci.secret.yaml
   - argocd.httproute.yaml
-#  - pi-hole.httproute.yaml
+  - pi-hole.httproute.yaml
