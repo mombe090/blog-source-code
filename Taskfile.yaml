@@ -72,3 +72,15 @@ tasks:
         curl -k --request GET \
         --url https://api.doudhal-devops.com/get-account-info/msisdn/21211221 \
         --header 'authorization: Bearer $GATEWAY_API_TOKEN'
+
+  upgrade-talos-image-control-plane:
+    cmds:
+      - talosctl upgrade -n 192.168.10.130 --image factory.talos.dev/installer/88d1f7a5c4f1d3aba7df787c448c1d3d008ed29cfb34af53fa0df4336a56040b:v1.9.4
+
+  upgrade-talos-image-worker1:
+    cmds:
+      - talosctl upgrade -n 192.168.10.131 --image factory.talos.dev/installer/88d1f7a5c4f1d3aba7df787c448c1d3d008ed29cfb34af53fa0df4336a56040b:v1.9.4
+
+  upgrade-talos-image-worker2:
+    cmds:
+      - talosctl upgrade -n 192.168.10.132 --image factory.talos.dev/installer/88d1f7a5c4f1d3aba7df787c448c1d3d008ed29cfb34af53fa0df4336a56040b:v1.9.4
