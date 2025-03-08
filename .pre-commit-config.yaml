@@ -7,6 +7,8 @@ repos:
       - id: check-merge-conflict
       - id: check-yaml
       - id: detect-aws-credentials
+        args:
+          - --allow-missing-credentials
       - id: end-of-file-fixer
       - id: mixed-line-ending
 
