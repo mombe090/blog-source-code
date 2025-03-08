@@ -31,7 +31,7 @@ variable "jwks_uri" {
 }
 
 variable "audience" {
-  default = string
+  type = string
   description = "L'audience de votre serveur d'authentification, nous ferons une validation de l'audience dans les tokens JWT"
 }
 
