@@ -1,0 +1,19 @@
+meta {
+  name: get-account-info
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://api.doudhal-devops.com/get-account-info/msisdn/69066
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImphcE9TT0prMzhDSGp5R3RwTktyQSJ9.eyJpc3MiOiJodHRwczovL2RvdWRoYWwtZGV2b3BzLmNhLmF1dGgwLmNvbS8iLCJzdWIiOiJsNUk4NnNCbktSQlFOYlNrcUhSZ1VydzBCUXVhWGtoQkBjbGllbnRzIiwiYXVkIjoiZmludGVjaC1hcHAtc2FtcGxlLXNlcnZlcmxlc3MtYXdzIiwiaWF0IjoxNzM5NjgyMzk0LCJleHAiOjE3Mzk3Njg3OTQsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyIsImF6cCI6Imw1STg2c0JuS1JCUU5iU2txSFJnVXJ3MEJRdWFYa2hCIn0.ADkwjoLfMgAVZiAbtf5r91eiRXhRsOsh38FVUkyPYzCGwyvMjycgRLMhy0YvB0L4eEeNhQ-LPKdYlVQAHiw2Qh6gvwt8etI0eWF8qkHKklsFL3tFNBikZR8ovXINPT-Im56lj_GjVX-cMMtl-zkpkAp9Q-spBwWIQwzrKwG3TCrEck_cakOear68g1HS-U3xYqmZdNnAnKXik0_c54vGlMFJKJDRlVwizPKzAI4Y31YoCCnttfkAV_gCV1pxcbEOXPrkgsYUfEoFv__PS9VZR1OaEY89iff5bOH8QY46DrfhEJp4sAH74_5mBncZY3P8VkFg30icdCgme0d-qOO6Zw
+}
+
+vars:pre-request {
+  msisdn: 623684286
+}

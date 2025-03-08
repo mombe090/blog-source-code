@@ -1,0 +1,74 @@
+version: '3'
+
+env:
+  FINTECH_SOLUTION_DIR : "src/aws-serverless-architecture/mobile-money-transfer"
+  TF_VAR_aws_account_id: "{{ .AWS_ACCOUNT_ID }}"
+  TF_VAR_domain: "{{ .FINTECH_SOLUTION_DOMAINE }}"
+  TF_VAR_issuer_uri: "{{ .FINTECH_SOLUTION_ISSUER_URI }}"
+  TF_VAR_jwks_uri: "{{ .FINTECH_SOLUTION_JWKS_URI }}"
+  TF_VAR_audience: "{{ .FINTECH_SOLUTION_AUDIENCE }}"
+  TF_VAR_sms_provider_client_id: "{{ .NIMBA_SMS_CLIENT_ID }}"
+  TF_VAR_sms_provider_client_secret: "{{ .NIMBA_SMS_CLIENT_SECRET }}"
+  TF_VAR_test_email: "{{ .FINTECH_SOLUTION_TEST_EMAIL }}"
+
+tasks:
+
+  build-and-deploy-dev:
+    cmds:
+      - task: build-authorizer
+      - task: build-get-account-info
+      - task: build-init-user-account
+      - task: tf-plan-dev
+      - task: tf-apply-dev
+
+  tf-plan-dev:
+    dir: "{{ .FINTECH_SOLUTION_DIR }}/infra-as-code/environments/dev"
+    cmds:
+      - terraform init
+      - terraform plan
+
+  tf-apply-dev:
+    dir: "{{ .FINTECH_SOLUTION_DIR }}/infra-as-code/environments/dev"
+    cmds:
+      - pwd
+      - terraform fmt -recursive
+      - terraform apply -auto-approve
+
+  tf-destroy-dev:
+    dir: "{{ .FINTECH_SOLUTION_DIR }}/infra-as-code/environments/dev"
+    cmds:
+      - terraform destroy -auto-approve
+
+  build-authorizer:
+    dir: "{{ .FINTECH_SOLUTION_DIR }}/lambda-src/authorizer"
+    cmds:
+      - yarn
+      - yarn run build
+      - cd dist && zip -r authorizer.zip .
+      - mkdir -p ../../infra-as-code/modules/common/dist
+      - cp dist/authorizer.zip ../../infra-as-code/modules/common/dist/authorizer.zip
+
+  build-get-account-info:
+    dir: "{{ .FINTECH_SOLUTION_DIR }}/lambda-src/get-account-info"
+    cmds:
+      - yarn
+      - yarn run build
+      - cd dist && zip -r get-account-info.zip .
+      - mkdir -p ../../infra-as-code/modules/common/dist
+      - cp dist/get-account-info.zip ../../infra-as-code/modules/common/dist/get-account-info.zip
+
+  build-init-user-account:
+    dir: "{{ .FINTECH_SOLUTION_DIR }}/lambda-src/init-user-account"
+    cmds:
+      - yarn
+      - yarn run build
+      - cd dist && zip -r init-user-account.zip .
+      - mkdir -p ../../infra-as-code/modules/common/dist
+      - cp dist/init-user-account.zip ../../infra-as-code/modules/common/dist/init-user-account.zip
+
+  curl-get-account-info:
+    cmds:
+      - |
+        curl -k --request GET \
+        --url https://api.doudhal-devops.com/get-account-info/msisdn/21211221 \
+        --header 'authorization: Bearer $GATEWAY_API_TOKEN'

@@ -1,0 +1,8 @@
+issuer_uri="https://ramdom-issuer-uri.com"
+
+jwks_uri="https://ramdom-issuer-uri.json"
+
+audience = "ramdom-audience"
+
+domain = "votre-domaine"
+

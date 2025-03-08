@@ -1,0 +1,50 @@
+openapi: 3.0.3
+
+info:
+  title: API Argent Mobile
+  description: Cette API est juste un prototype pour la gestion des comptes Argent Mobile et utilisé comme exemple pour la formation DevSecOps
+  version: 1.0.0
+servers:
+  - url: "https://api.doudhal-devops.com/v1"
+
+components:
+  securitySchemes:
+    JwtAuthorizer:
+      type: apiKey
+      name: Authorization
+      in: header
+      x-amazon-apigateway-authtype: "custom"
+      x-amazon-apigateway-authorizer:
+        type: "token"
+        authorizerUri: "arn:aws:apigateway:${aws_region}:lambda:path/2015-03-31/functions/${jwt_authorizer_lambda_arn}/invocations"
+        authorizerResultTtlInSeconds: 250
+        identitySource: "method.request.header.Authorization"
+        identityValidationExpression: "^Bearer\\s[a-zA-Z0-9._-]+$"
+
+paths:
+  /get-account-info/msisdn/{msisdn}:
+    get:
+      operationId: getAccountInfo
+      description: Obtenir les informations sur la solde d'argent mobile d'un numéro de téléphone
+      security:
+        - JwtAuthorizer: []
+
+      parameters:
+        - name: msisdn
+          in: path
+          required: true
+          description: Le numéro de telephone du client
+          schema:
+            type: string
+      x-amazon-apigateway-integration:
+        credentials: "${api_gateway_role_arn}"
+        uri: "arn:aws:apigateway:${aws_region}:lambda:path/2015-03-31/functions/${get_account_info_lambda_arn}/invocations"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "aws_proxy"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}

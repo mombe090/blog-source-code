@@ -1,0 +1,9 @@
+export AWS_ACCESS_KEY_ID=votre-access-key-id
+export AWS_SECRET_ACCESS_KEY=votre-secret-access-key
+export AWS_DEFAULT_REGION=votre-region
+export AWS_ACCOUNT_ID=votre-account-id
+
+export FINTECH_SOLUTION_DOMAINE="votre-domaine"
+export FINTECH_SOLUTION_ISSUER_URI="votre-issuer-uri"
+export FINTECH_SOLUTION_JWKS_URI="votre-jwks-uri"
+export FINTECH_SOLUTION_AUDIENCE="votre-audience"
