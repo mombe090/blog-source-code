@@ -12,4 +12,4 @@ components:
   - ../../components/contour
   - ../../components/pi-hole
   - ../../components/external-dns
-  - ../../components/longhorn
+  #- ../../components/longhorn
