@@ -29,4 +29,3 @@ else
     echo "Suppression du script dont on a plus besoin"
     rm script.sh
 fi
-

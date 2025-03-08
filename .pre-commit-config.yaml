@@ -1,0 +1,34 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0  # Use the ref you want to point at
+    hooks:
+      - id: trailing-whitespace
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: check-json
+      - id: detect-aws-credentials
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.97.4
+    # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_validate
+      - id: terraform_tflint
+        args:
+          - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
+          - --args=--chdir=__GIT_WORKING_DIR__/src/opentofu
+          - --args=--call-module-type=local
+          - --args=--recursive
+          - --args=--format=compact
+
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args: [ '--baseline', '.secrets.baseline' ]
+        additional_dependencies: ['gibberish-detector']
+        exclude: package.lock.json

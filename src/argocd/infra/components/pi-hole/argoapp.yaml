@@ -18,20 +18,20 @@ spec:
         #nous utiliserons dans un autre article [longhorn](https://longhorn.io)
         persistentVolumeClaim:
           enabled: false
-        
+
         #J'utilise la fonctionnalité de metallb pour par le même ip pour les service DNS et Web de pihole
         serviceWeb:
           loadBalancerIP: 192.168.10.138
           annotations:
             metallb.universe.tf/allow-shared-ip: pihole-svc
           type: LoadBalancer
-        
+
         serviceDns:
           loadBalancerIP: 192.168.10.138
           annotations:
             metallb.universe.tf/allow-shared-ip: pihole-svc
           type: LoadBalancer
-        
+
         #J'utilise un secret existant sur le namespace pour le mot de passe admin
         #le secret a été créé avec la commande suivante:
         #kubectl create secret generic pihole-admin-password-secret --from-literal=pihole_password='my_password' -n pihole-system
