@@ -1,6 +1,6 @@
 #A décommenter au fur et à mesure de l'avancement des composants
 
-resources: []
-#  - docker-io-helm-oci.secret.yaml
-#  - argocd.httproute.yaml
+resources:
+  - docker-io-helm-oci.secret.yaml
+  - argocd.httproute.yaml
 #  - pi-hole.httproute.yaml
