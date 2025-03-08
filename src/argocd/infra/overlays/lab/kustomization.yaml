@@ -1,13 +1,14 @@
 #A décommenter au fur et à mesure de l'avancement des composants
 
-resources: []
+resources:
+  - ../../base/metallb
 #  - ../../base/common
-#  - ../../base/metallb
+
 #  - ../../base/cert-manager
 #  - ../../base/contour
 
-components: []
-#  - ../../components/metallb
+components:
+  - ../../components/metallb
 #  - ../../components/cert-manager
 #  - ../../components/contour
 #  - ../../components/pi-hole

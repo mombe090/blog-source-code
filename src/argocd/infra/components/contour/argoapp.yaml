@@ -15,7 +15,7 @@ spec:
     path: contour
 
   - repoURL: https://github.com/mombe090/blog-source-code.git
-    targetRevision: argo-pihole-extd-certmanager
+    targetRevision: feat/homelab-absolute-tools-p2
     path: src/argocd/infra/components/contour/gateway-provider-crds
 
   destination:

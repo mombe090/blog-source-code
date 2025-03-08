@@ -10,7 +10,7 @@ spec:
 
   source:
     repoURL: https://github.com/mombe090/blog-source-code.git
-    targetRevision: argo-pihole-extd-certmanager
+    targetRevision: feat/homelab-absolute-tools-p2
     path: src/argocd/apps/overlays/lab
 
   destination:
