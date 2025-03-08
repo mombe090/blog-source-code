@@ -3,8 +3,7 @@
 resources:
   - ../../base/metallb
 #  - ../../base/common
-
-#  - ../../base/cert-manager
+  - ../../base/cert-manager
 #  - ../../base/contour
 
 components:
