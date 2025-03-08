@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  tflint:
+  pre-commit:
     runs-on: ubuntu-latest
 
     steps:
