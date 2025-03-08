@@ -11,4 +11,5 @@ components:
   - ../../components/cert-manager
   - ../../components/contour
   - ../../components/pi-hole
-#  - ../../components/external-dns
+  - ../../components/external-dns
+  - ../../components/longhorn
