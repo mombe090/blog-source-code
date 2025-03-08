@@ -10,5 +10,5 @@ components:
   - ../../components/metallb
   - ../../components/cert-manager
   - ../../components/contour
-#  - ../../components/pi-hole
+  - ../../components/pi-hole
 #  - ../../components/external-dns
