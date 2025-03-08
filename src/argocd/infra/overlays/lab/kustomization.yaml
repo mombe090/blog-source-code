@@ -9,6 +9,6 @@ resources:
 components:
   - ../../components/metallb
   - ../../components/cert-manager
-#  - ../../components/contour
+  - ../../components/contour
 #  - ../../components/pi-hole
 #  - ../../components/external-dns
