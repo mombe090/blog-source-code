@@ -27,7 +27,7 @@ resource "talos_machine_configuration_apply" "worker" {
     })
   ]
 
-  depends_on = [proxmox_virtual_environment_vm.worker-1]
+  depends_on = [proxmox_virtual_environment_vm.worker_1]
 }
 
 resource "talos_machine_configuration_apply" "worker_02" {
@@ -49,5 +49,5 @@ resource "talos_machine_configuration_apply" "worker_02" {
     })
   ]
 
-  depends_on = [proxmox_virtual_environment_vm.worker-2]
+  depends_on = [proxmox_virtual_environment_vm.worker_2]
 }

@@ -16,4 +16,3 @@ spec:
       backendRefs:
         - name: nginx
           port: 80
-

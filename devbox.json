@@ -1,0 +1,20 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.14.0/.schema/devbox.schema.json",
+  "packages": [
+    "python@3.13",
+    "detect-secrets@latest",
+    "tflint@latest",
+    "pre-commit@latest",
+    "git@latest"
+  ],
+  "shell": {
+    "init_hook": [
+      "source .venv/bin/activate"
+    ],
+    "scripts": {
+      "test": [
+        "echo \"Error: no test specified\" && exit 1"
+      ]
+    }
+  }
+}

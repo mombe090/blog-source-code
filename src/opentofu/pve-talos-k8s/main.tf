@@ -3,13 +3,18 @@ terraform {
   required_version = ">= 1.0.0" #version de terraform supérieur ou égale à 1.10.0
   required_providers {
     proxmox = {
-      source = "bpg/proxmox"
+      source  = "bpg/proxmox"
       version = "0.70.0"
     }
 
     talos = {
-      source = "siderolabs/talos"
+      source  = "siderolabs/talos"
       version = "0.7.0"
+    }
+
+    null = {
+      source  = "hashicorp/null"
+      version = "3.2.3"
     }
   }
 }

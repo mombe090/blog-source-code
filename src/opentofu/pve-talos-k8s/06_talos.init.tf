@@ -5,7 +5,7 @@ data "talos_client_configuration" "this" {
   cluster_name         = var.cluster_name
   client_configuration = talos_machine_secrets.this.client_configuration
   nodes                = [var.control_plane_ip] #les ips de l'ensemble des control plane du cluster
-  endpoints = [var.control_plane_ip]
+  endpoints            = [var.control_plane_ip]
 }
 
 #Configuration du control plane
@@ -34,7 +34,7 @@ resource "talos_machine_configuration_apply" "controlplane" {
       }
       cluster = {
         proxy = {
-          image = "registry.k8s.io/kube-proxy:v1.32.0"
+          image     = "registry.k8s.io/kube-proxy:v1.32.0"
           extraArgs = { nodeport-addresses = "0.0.0.0/0" }
         }
       }
@@ -73,4 +73,3 @@ data "talos_cluster_health" "this" {
     read = "8m"
   }
 }
-
