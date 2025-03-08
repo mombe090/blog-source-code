@@ -88,7 +88,7 @@ data "aws_iam_policy_document" "init_account_lambda_policy_document" {
     ]
 
     resources = compact([
-        var.apply_custom_domain ? aws_ses_domain_identity.domain_identity[0].arn : "",
+      var.apply_custom_domain ? aws_ses_domain_identity.domain_identity[0].arn : "",
       aws_ses_email_identity.email_identity.arn
     ])
   }

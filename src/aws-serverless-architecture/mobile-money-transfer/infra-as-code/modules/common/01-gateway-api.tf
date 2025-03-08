@@ -1,5 +1,5 @@
 locals {
-  api_gw_name = "fintech-solution-api"
+  api_gw_name                 = "fintech-solution-api"
   get_acount_info_lambda_name = "get-account-info"
 }
 
@@ -108,4 +108,3 @@ resource "aws_api_gateway_base_path_mapping" "this" {
   stage_name  = aws_api_gateway_stage.this.stage_name
   domain_name = aws_api_gateway_domain_name.this[0].domain_name
 }
-

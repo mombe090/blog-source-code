@@ -30,5 +30,5 @@ resource "aws_acm_certificate" "this" {
 resource "aws_acm_certificate_validation" "this" {
   count = var.apply_custom_domain ? 1 : 0
 
-  certificate_arn   = aws_acm_certificate.this[0].arn
+  certificate_arn = aws_acm_certificate.this[0].arn
 }

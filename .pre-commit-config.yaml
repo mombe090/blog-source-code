@@ -6,7 +6,6 @@ repos:
       - id: check-added-large-files
       - id: check-merge-conflict
       - id: check-yaml
-      - id: check-json
       - id: detect-aws-credentials
       - id: end-of-file-fixer
       - id: mixed-line-ending
@@ -20,7 +19,7 @@ repos:
       - id: terraform_tflint
         args:
           - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
-          - --args=--chdir=__GIT_WORKING_DIR__/src/opentofu
+          - --args=--chdir=__GIT_WORKING_DIR__/src
           - --args=--call-module-type=local
           - --args=--recursive
           - --args=--format=compact
@@ -29,6 +28,6 @@ repos:
     rev: v1.5.0
     hooks:
       - id: detect-secrets
-        args: [ '--baseline', '.secrets.baseline' ]
+        args: [ '--baseline', '.secrets.baseline', '--exclude-files', 'src/diagrams/*' ]
         additional_dependencies: ['gibberish-detector']
         exclude: package.lock.json

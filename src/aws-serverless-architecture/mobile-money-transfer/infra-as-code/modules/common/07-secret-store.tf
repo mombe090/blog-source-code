@@ -8,5 +8,3 @@ resource "aws_ssm_parameter" "sms_provider_credentials" {
     "url" : var.sms_provider_api_url
   })
 }
-
-

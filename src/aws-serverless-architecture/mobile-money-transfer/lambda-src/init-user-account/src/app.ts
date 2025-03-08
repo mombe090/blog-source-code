@@ -195,7 +195,7 @@ export const sendEmailNotificationToUser = async (
                                     <ul style="color: #666666; font-size: 16px; line-height: 1.6;">
                                         <li>Username: nom complet </li>
                                         <li>Email : votre email</li>
-                                        
+
                                     </ul>
                                     <a href="https://mombe0909.github.io" target="_blank" rel="noopener noreferrer" title="https://mombe0909.github.io" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #ffffff; text-decoration: none; border-radius: 5px; margin-top: 20px;">Lisez d'autres articles sur le blog.</a>
                                 </div>

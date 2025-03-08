@@ -1,11 +1,11 @@
 variable "apply_custom_domain" {
-  type    = bool
-  default = false
+  type        = bool
+  default     = false
   description = "Utiliser pour s'avoir si on map l'api gateway à votre domaine via la Route53"
 }
 
 variable "domain" {
-  type = string
+  type        = string
   description = "Le domaine que vous voulez utiliser pour votre api gateway"
 }
 
@@ -16,7 +16,7 @@ variable "aws_region" {
 }
 
 variable "aws_account_id" {
-  type = string
+  type        = string
   description = "Le numéro de compte AWS que vous utilisez, vous pouvez le trouver en haut à droite de la console AWS"
 }
 
@@ -31,26 +31,32 @@ variable "jwks_uri" {
 }
 
 variable "audience" {
-  default = string
+  type        = string
   description = "L'audience de votre serveur d'authentification, nous ferons une validation de l'audience dans les tokens JWT"
 }
 
 variable "sms_provider_client_id" {
-  type      = string
-  sensitive = true
+  type        = string
+  description = "Client id de votre fournisseur de SMS"
+  sensitive   = true
 }
 
 variable "sms_provider_client_secret" {
-  type      = string
-  sensitive = true
+  type        = string
+  description = "Client secret de votre fournisseur de SMS"
+  sensitive   = true
 }
 
 variable "sms_provider_api_url" {
-  type = string
+  type        = string
+  description = "L'url de l'api de votre fournisseur de SMS"
 }
 
 variable "enable_sms_notifications" {
-  type = string
+  type        = string
+  description = "Activer ou désactiver les notifications par SMS"
+  default     = "OFF"
+
   validation {
     condition     = contains(["ON", "OFF"], var.enable_sms_notifications)
     error_message = "La variable enable_sms_notifications doit être soit \"ON\" soit \"OFF\". \""
@@ -58,7 +64,9 @@ variable "enable_sms_notifications" {
 }
 
 variable "enable_email_notifications" {
-  type = string
+  type        = string
+  description = "Activer ou désactiver les notifications par email"
+
   validation {
     condition     = contains(["ON", "OFF"], var.enable_email_notifications)
     error_message = "La variable enable_sms_notifications doit être soit \"ON\" soit \"OFF\". \""
@@ -66,12 +74,12 @@ variable "enable_email_notifications" {
 }
 
 variable "test_destination_email" {
-  // nous utilisons la version production d'SES, donc nous devons fournir une adresse email et valider l'adresse email pour pouvoir envoyer des emails
-  type = string
+  # nous utilisons la version production d'SES, donc nous devons fournir une adresse email et valider l'adresse email pour pouvoir envoyer des emails
+  type        = string
+  description = "Adresse email de test pour valider l'adresse email"
+
   validation {
     condition     = can(regex("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$", var.test_destination_email))
     error_message = "La variable test_destination_email doit être une adresse email valide."
   }
 }
-
-
