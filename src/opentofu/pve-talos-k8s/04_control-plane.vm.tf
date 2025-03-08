@@ -1,5 +1,5 @@
-resource "proxmox_virtual_environment_vm" "control-plane" {
-  vm_id = 10000
+resource "proxmox_virtual_environment_vm" "control_plane" {
+  vm_id     = 10000
   name      = "control-plane"
   node_name = "pve" # Remplacez "pve" par le nom de votre serveur Proxmox
 
@@ -9,13 +9,13 @@ resource "proxmox_virtual_environment_vm" "control-plane" {
   }
 
   description = "Control Plane, Talos Linux charger de la gestion du cluster kubernetes"
-  tags        = ["control-plane","kubernetes", "Talos", "DEV"] # ajuster vos tags, peuvent être utilisé pour les filtres
+  tags        = ["control-plane", "kubernetes", "Talos", "DEV"] # ajuster vos tags, peuvent être utilisé pour les filtres
 
   on_boot         = true # démarrer la vm au démarrage du serveur proxmox
   stop_on_destroy = true
 
   cpu {
-    cores = 4 #Talos recommande 4 coeurs pour des workloads de production, 2 étant le minimum pour le control plane mais ajuster à vos bésoins.
+    cores = 4               #Talos recommande 4 coeurs pour des workloads de production, 2 étant le minimum pour le control plane mais ajuster à vos bésoins.
     type  = "x86-64-v2-AES" # type de cpu moderne supporter par la plupart des serveurs et services.
   }
 
@@ -36,7 +36,7 @@ resource "proxmox_virtual_environment_vm" "control-plane" {
     ip_config {
       ipv4 {
         address = "${var.control_plane_ip}/24"
-        gateway = "192.168.10.1"
+        gateway = var.gateway
       }
       ipv6 {
         address = "dhcp"
@@ -60,4 +60,3 @@ resource "proxmox_virtual_environment_vm" "control-plane" {
 
   depends_on = [null_resource.this]
 }
-
