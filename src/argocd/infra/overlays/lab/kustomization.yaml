@@ -1,7 +1,7 @@
 #A décommenter au fur et à mesure de l'avancement des composants
 
-resources: []
-#  - ../../base/metallb
+resources:
+  - ../../base/metallb
 #  - ../../base/common
 
 #  - ../../base/cert-manager
