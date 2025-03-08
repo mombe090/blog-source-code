@@ -24,6 +24,17 @@ resource "talos_machine_configuration_apply" "controlplane" {
   config_patches = [
     yamlencode({
       machine = {
+        kubelet = {
+          extraMounts = [
+            {
+              destination = "/var/lib/longhorn",
+              type        = "bind",
+              source      = "/var/lib/longhorn",
+              options     = ["bind", "rshared", "rw"]
+            }
+          ]
+        }
+
         registries = {
           mirrors = {
             "docker.io" = {
@@ -32,6 +43,7 @@ resource "talos_machine_configuration_apply" "controlplane" {
           }
         }
       }
+
       cluster = {
         proxy = {
           image     = "registry.k8s.io/kube-proxy:v1.32.0"

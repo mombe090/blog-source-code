@@ -16,6 +16,17 @@ resource "talos_machine_configuration_apply" "worker" {
   config_patches = [
     yamlencode({
       machine = {
+        kubelet = {
+          extraMounts = [
+            {
+              destination = "/var/lib/longhorn",
+              type        = "bind",
+              source      = "/var/lib/longhorn",
+              options     = ["bind", "rshared", "rw"]
+            }
+          ]
+        }
+
         registries = {
           mirrors = {
             "docker.io" = {
@@ -38,6 +49,17 @@ resource "talos_machine_configuration_apply" "worker_02" {
   config_patches = [
     yamlencode({
       machine = {
+        kubelet = {
+          extraMounts = [
+            {
+              destination = "/var/lib/longhorn",
+              type        = "bind",
+              source      = "/var/lib/longhorn",
+              options     = ["bind", "rshared", "rw"]
+            }
+          ]
+        }
+
         registries = {
           mirrors = {
             "docker.io" = {

@@ -4,6 +4,18 @@ variable "pve_ip" {
   default     = "192.168.10.253"
 }
 
+variable "pve_ssh_key_path" {
+  type        = string
+  description = "Chemin de la cle publique ssh pour se connecter au serveur proxmox"
+  default     = "~/.ssh/id_ed25519"
+}
+
+variable "pve_ssh_user" {
+  type        = string
+  description = "Utilisateur pour se connecter au serveur proxmox"
+  default     = "root"
+}
+
 variable "talos_img_name" {
   type        = string
   description = "Nom de l'image talos à telecharger sur https://factory.talos.dev"

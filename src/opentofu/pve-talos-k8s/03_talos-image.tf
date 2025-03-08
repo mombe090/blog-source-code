@@ -3,7 +3,9 @@ data "talos_image_factory_extensions_versions" "this" {
   talos_version = var.talos_version
   filters = {
     names = [
-      "qemu-guest-agent"
+      "qemu-guest-agent",
+      "iscsi-tools",
+      "util-linux-tools"
     ]
   }
 }
@@ -24,8 +26,8 @@ resource "null_resource" "this" {
   connection {
     type        = "ssh"
     host        = var.pve_ip
-    user        = "root" # Remplacez par l'utilisateur approprié
-    private_key = file("~/.ssh/id_ed25519")
+    user        = var.pve_ssh_user # Remplacez par l'utilisateur approprié
+    private_key = file(var.pve_ssh_key_path)
   }
 
   provisioner "file" {

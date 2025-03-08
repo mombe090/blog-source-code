@@ -1,0 +1,4 @@
+namespace: contour-system
+
+resources:
+  - contour-gateway-provisioner.yaml
