@@ -4,6 +4,12 @@ data "vault_policy_document" "tuto_policy_document" {
     capabilities = ["read", "list"]
     description  = "Autorise la lecture des secrets de tuto/* par le role tuto"
   }
+
+  rule {
+    path         = "auth/token/lookup-self"
+    capabilities = ["read", "update"]
+    description  = "Autorise la lecture des secrets de tuto/* par le role tuto"
+  }
 }
 
 # Mount the KV secrets engine at "secrets" with version 2
