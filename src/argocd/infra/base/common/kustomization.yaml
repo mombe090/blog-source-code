@@ -6,3 +6,5 @@ resources:
   - pi-hole.httproute.yaml
   - longhorn.httproute.yaml
   - vault.httproute.yaml
+
+  - vault.cluster-secretstore.yaml
