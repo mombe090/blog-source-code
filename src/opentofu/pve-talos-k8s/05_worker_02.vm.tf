@@ -29,7 +29,7 @@ resource "proxmox_virtual_environment_vm" "worker_2" {
     file_id      = "local:iso/${var.talos_img_name}.${var.talos_version}.img"
     interface    = "virtio0"
     file_format  = "raw"
-    size         = 10 # 10 Go minimum pour Talos
+    size         = 25 # 10 Go minimum pour Talos
   }
 
   initialization {

@@ -79,7 +79,7 @@ data "talos_cluster_health" "this" {
   ]
   client_configuration = data.talos_client_configuration.this.client_configuration
   control_plane_nodes  = [var.control_plane_ip]
-  worker_nodes         = [var.worker_01_ip, var.worker_02_ip]
+  worker_nodes         = [var.worker_01_ip, var.worker_02_ip, var.worker_03_ip]
   endpoints            = data.talos_client_configuration.this.endpoints
   timeouts = {
     read = "8m"

@@ -52,6 +52,12 @@ variable "worker_02_ip" {
   default     = "192.168.10.132"
 }
 
+variable "worker_03_ip" {
+  type        = string
+  description = "IP du worker 03"
+  default     = "192.168.10.133"
+}
+
 variable "cluster_name" {
   type        = string
   description = "Nom du cluster"

@@ -73,3 +73,36 @@ resource "talos_machine_configuration_apply" "worker_02" {
 
   depends_on = [proxmox_virtual_environment_vm.worker_2]
 }
+
+resource "talos_machine_configuration_apply" "worker_03" {
+  client_configuration        = talos_machine_secrets.this.client_configuration
+  machine_configuration_input = data.talos_machine_configuration.worker.machine_configuration
+  node                        = var.worker_03_ip
+
+  config_patches = [
+    yamlencode({
+      machine = {
+        kubelet = {
+          extraMounts = [
+            {
+              destination = "/var/lib/longhorn",
+              type        = "bind",
+              source      = "/var/lib/longhorn",
+              options     = ["bind", "rshared", "rw"]
+            }
+          ]
+        }
+
+        registries = {
+          mirrors = {
+            "docker.io" = {
+              endpoints = ["https://mirror.gcr.io"]
+            }
+          }
+        }
+      }
+    })
+  ]
+
+  depends_on = [proxmox_virtual_environment_vm.worker_3]
+}

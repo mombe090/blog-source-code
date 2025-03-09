@@ -5,3 +5,4 @@ resources:
   - argocd.httproute.yaml
   - pi-hole.httproute.yaml
   - longhorn.httproute.yaml
+  - vault.httproute.yaml

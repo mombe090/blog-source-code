@@ -1,6 +1,6 @@
-resource "proxmox_virtual_environment_vm" "worker_1" {
-  vm_id     = 10001
-  name      = "worker-1"
+resource "proxmox_virtual_environment_vm" "worker_3" {
+  vm_id     = 10003
+  name      = "worker-3"
   node_name = "pve" # Remplacez "pve" par le nom de votre serveur Proxmox
 
   # Activer l'agent QEMU-engine mais réquière le package qemu-guest-agent de talos
@@ -9,7 +9,7 @@ resource "proxmox_virtual_environment_vm" "worker_1" {
     enabled = true
   }
 
-  description = "Worker 1, chargé de faire tourner les workloads kubernetes"
+  description = "Worker 3, chargé de faire tourner les workloads kubernetes"
   tags        = ["worker", "kubernetes", "Talos", "DEV"] # ajuster vos tags, peuvent être utilisé pour les filtres
 
   on_boot         = true # démarrer la vm au démarrage du serveur proxmox
@@ -36,7 +36,7 @@ resource "proxmox_virtual_environment_vm" "worker_1" {
     datastore_id = "local-lvm"
     ip_config {
       ipv4 {
-        address = "${var.worker_01_ip}/24"
+        address = "${var.worker_03_ip}/24"
         gateway = var.gateway
       }
       ipv6 {
