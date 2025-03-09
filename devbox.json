@@ -5,7 +5,8 @@
     "detect-secrets@latest",
     "tflint@latest",
     "pre-commit@latest",
-    "git@latest"
+    "git@latest",
+    "vault@latest"
   ],
   "shell": {
     "init_hook": [

@@ -14,3 +14,4 @@ components:
   - ../../components/external-dns
   - ../../components/longhorn
   - ../../components/vault
+  - ../../components/external-secrets
