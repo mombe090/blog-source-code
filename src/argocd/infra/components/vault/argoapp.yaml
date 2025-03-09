@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vault
+  namespace: argo-cd
+spec:
+  destination:
+    namespace: vault-system
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: vault
+    repoURL: https://helm.releases.hashicorp.com
+    targetRevision:  0.29.1
+    helm:
+      releaseName: vault
+      values: |
+        injector:
+          enabled: false
+        ui:
+          enabled: true
+        csi:
+          enabled: true
+        server:
+          dataStorage:
+            enabled: true
+            size: 1Gi
+            mountPath: "/vault/data"
+            storageClass: longhorn
+            accessMode: ReadWriteOnce
+          persistentVolumeClaimRetentionPolicy:
+            whenDeleted: Retain
+            whenScaled: Retain
+          statefulSet:
+            pod:
+              restartPolicy: OnFailure
+      syncPolicy:
+        syncOptions:
+          - ServerSideApply=true
+          - CreateNamespace=true

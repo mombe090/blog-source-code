@@ -13,3 +13,4 @@ components:
   - ../../components/pi-hole
   - ../../components/external-dns
   - ../../components/longhorn
+  - ../../components/vault
