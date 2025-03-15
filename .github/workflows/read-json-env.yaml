@@ -1,0 +1,19 @@
+name: Read JSON Env Config
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+
+env:
+  TF_VAR_aws_region: ${{ fromJson(file('.github/workflows/config.json')) }}
+
+jobs:
+  tflint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout source code
+
+      - run: echo ${{ env.TF_VAR_aws_region }}
