@@ -16,3 +16,37 @@ spec:
     syncOptions:
       - ServerSideApply=true
       - CreateNamespace=true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cloudnative-pg-cluster
+  namespace: argo-cd
+spec:
+  destination:
+    namespace: cloudnative-pg
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: cluster
+    repoURL: https://cloudnative-pg.github.io/charts
+    targetRevision:  0.2.1
+    helm:
+      values: |
+        cluster:
+          storage:
+            size: 10Gi
+            storageClass: "longhorn"
+          initdb:
+            database: app
+            owner: mombe090
+            secret:
+              name: cloudnative-pg-cluster-credentials
+        mode: standalone
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
+      - CreateNamespace=true
+
+---
