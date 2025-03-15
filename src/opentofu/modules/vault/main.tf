@@ -50,4 +50,6 @@ resource "vault_token" "example" {
   metadata = {
     "purpose" = "external-secret-eso"
   }
+
+  depends_on = [vault_token_auth_backend_role.example]
 }

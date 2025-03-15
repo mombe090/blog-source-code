@@ -9,4 +9,6 @@ resources:
   - openbao.httproute.yaml
 
   - vault.cluster-secretstore.yaml
+  - openbao.cluster-secretstore.yaml
+
   - pg.tcproute.yaml
