@@ -8,3 +8,4 @@ resources:
   - vault.httproute.yaml
 
   - vault.cluster-secretstore.yaml
+  - pg.tcproute.yaml

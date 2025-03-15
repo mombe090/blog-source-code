@@ -6,6 +6,12 @@ metadata:
 spec:
   gatewayClassName: contour
   listeners:
+    - name: tcp-routes
+      protocol: TCP
+      port: 8090
+      allowedRoutes:
+        kinds:
+          - kind: TCPRoute
     - name: http
       hostname: "*.tuto.mombesoft.com"
       protocol: HTTP
