@@ -6,9 +6,9 @@ metadata:
 spec:
   gatewayClassName: contour
   listeners:
-    - name: tcp-routes
+    - name: pg-route
       protocol: TCP
-      port: 8090
+      port: 5432
       allowedRoutes:
         namespaces:
           from: All
