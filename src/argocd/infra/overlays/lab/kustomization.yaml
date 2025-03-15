@@ -14,5 +14,6 @@ components:
   - ../../components/external-dns
   - ../../components/longhorn
   - ../../components/vault
+  - ../../components/openbao
   - ../../components/external-secrets
   - ../../components/cloudnative-pg
