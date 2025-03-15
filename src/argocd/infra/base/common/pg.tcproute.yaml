@@ -7,7 +7,7 @@ spec:
   parentRefs:
     - name: contour-gateway-api
       namespace: contour-system
-  #hostnames: ["cloudnative-pg.tuto.mombesoft.com"]
+  hostnames: ["cloudnative-pg.tuto.mombesoft.com"]
   rules:
     - backendRefs:
         - name: cloudnative-pg-cluster-rw
