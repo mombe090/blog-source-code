@@ -6,6 +6,7 @@ metadata:
 spec:
   parentRefs:
     - name: contour-gateway-api
+      sectionName: tcp-routes
       namespace: contour-system
   hostnames: ["cloudnative-pg.tuto.mombesoft.com"]
   rules:
