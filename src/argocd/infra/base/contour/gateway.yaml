@@ -10,8 +10,9 @@ spec:
       protocol: TCP
       port: 8090
       allowedRoutes:
-        kinds:
-          - kind: TCPRoute
+        namespaces:
+          from: All
+
     - name: http
       hostname: "*.tuto.mombesoft.com"
       protocol: HTTP
