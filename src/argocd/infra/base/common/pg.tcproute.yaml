@@ -1,5 +1,5 @@
 apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
+kind: TCPRoute
 metadata:
   name: pg-ui
   namespace: cloudnative-pg
@@ -8,7 +8,7 @@ spec:
     - name: contour-gateway-api
       sectionName: tcp-routes
       namespace: contour-system
-  hostnames: ["cloudnative-pg.tuto.mombesoft.com", "cloudnative-pg.tuto.mombesoft.com:8090"]
+  hostnames: ["cloudnative-pg.tuto.mombesoft.com"]
   rules:
     - backendRefs:
         - name: cloudnative-pg-cluster-rw
