@@ -6,7 +6,7 @@ on:
   pull_request:
 
 env:
-  TF_VAR_aws_region: ${{ fromJson(file('.github/workflows/config.json')) }}
+  TF_VAR_aws_region: ${{ fromJson(file('./.github/workflows/config.json')) }}
 
 jobs:
   tflint:
